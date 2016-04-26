@@ -16,7 +16,7 @@ public class TestHighScore1 {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Entrez votre prenom :");
 		String str = sc.nextLine();
-		System.out.println(" Bienvenue " + str);
+		
 		List<String> values = new ArrayList<String>(); 
 		
 		
@@ -31,10 +31,13 @@ public class TestHighScore1 {
 			Random rnd = new Random();
 			int rndValue = rnd.nextInt(values.size());
 
-			values.get(rndValue);
-		
+			String score = values.get(rndValue);
+			System.out.println( str+ " a fait un score de "+ score);
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
+		
 	}
 }
