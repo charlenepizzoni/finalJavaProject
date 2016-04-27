@@ -13,6 +13,7 @@ public class TestHighScore1 {
 
 	public static void main(String[] args) {
 		
+		// Part current score
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Entrez votre prenom :");
 		String str = sc.nextLine();
@@ -38,6 +39,18 @@ public class TestHighScore1 {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
+		
+		// Part high scores
+		HighScore highScore = new HighScore();
+		String scores[];
+		int i = 0;
+		
+		scores = highScore.getScores();
+		System.out.println("\nPrevious high scores are :");
+		while ((i < 10) && (scores[i] != null)){
+			System.out.println(scores[i]);
+			i++;
+		}
 		
 	}
 }
