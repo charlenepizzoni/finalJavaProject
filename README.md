@@ -1,3 +1,4 @@
 # finalJavaProject
-authors : Charlène Pizzoni , Delvaux Mehdi
- 
+
+authors : Charlène Pizzoni , Mehdi Delvaux
+doc : http://charlenepizzoni.github.io/FinalJavaProject/
