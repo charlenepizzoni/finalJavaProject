@@ -9,8 +9,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * tests the class HighScores and its functions.
+ */
 public class TestHighScore1 {
 
+	/**
+	 * retrives a name and a score and display high scores.
+	 */
 	public static void main(String[] args) {
 		
 		// Part current score

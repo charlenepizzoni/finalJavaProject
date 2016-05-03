@@ -6,8 +6,15 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * manages high scores.
+ */
 public class HighScore {
 
+	/** 
+	 * retrives High Scores from web server 
+	 * @return an array containing high scores
+	 */
 	public String[] getScores() {
 		String scores[] = new String[10];
 		
