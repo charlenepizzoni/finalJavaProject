@@ -39,4 +39,13 @@ public class HighScore {
 	
 		return scores;
 	}
+	
+	/**
+	*
+	*/
+	public tenBestScores (String [] readScores) {
+		BestPlayer[] allBest = new BestPlayer[10];
+		
+		
+	}
 }
