@@ -20,14 +20,14 @@ public class TestHighScore2 {
 	public static void main(String[] args) {
 		
 		
-	/*	HighScore2 highscore = new HighScore2();
+		HighScore2 highscore = new HighScore2();
 		BestPlayer[] bestPlayers = highscore.tenBestScores(highscore.getScores());
 		int j = 1;
 		for (BestPlayer p : bestPlayers)
 			{
 				System.out.println("numero" + j + ": " + p);	
 				j++;
-			}*/
+			}
 		
 		// Part current score
 		Scanner sc = new Scanner(System.in);

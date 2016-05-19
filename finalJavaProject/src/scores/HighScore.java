@@ -16,7 +16,7 @@ public class HighScore {
 	 * @return an array containing high scores
 	 */
 	public String[] getScores() {
-		String scores[] = new String[10];
+		String[] scores = new String[10];
 		
 	    URL url;
 		try {

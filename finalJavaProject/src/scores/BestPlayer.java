@@ -11,7 +11,7 @@ import java.util.Scanner;
 /**
  * 
  */
-public class BestPlayer {
+public class BestPlayer implements comparable{
 	private String player;
 	private int score;
 	
@@ -21,13 +21,21 @@ public class BestPlayer {
 	}
 	
 	public int compareTo(BestPlayer p){
-		if (this.score == p.score){
+		if (this.score == p.getScore()){
 			return 0;
-		} else if (this.score < p.score) {
+		} else if (this.score < p.getScore()) {
 			return -1;
 		} else {
 			return 1;
 		}
+	}
+
+	public int getScore(){
+		return this.score;
+	}
+
+	public String getName(){
+		return this.name;
 	}
 	
 	

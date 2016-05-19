@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 /**
  * manages high scores.
@@ -22,7 +23,7 @@ public class HighScore2 {
 	 */
 	public List<String> getScores() {
 		
-		List<String> scores = new ArrayList<>();
+		List<String> scores = new ArrayList<String>();
 		//String scores[] = new String[10];
 		
 	    URL url;
@@ -48,24 +49,31 @@ public class HighScore2 {
 	}
 	
 	/**
-	*
+	* Retrieves scores and extract the 10 best
 	*/
-
 	public BestPlayer[] tenBestScores(List<String> readScores) {
-		
-		
-		
-		BestPlayer[] allBest = new BestPlayer[10];
+		ArrayList<BestPlayer> allBest = new ArrayList<BestPlayer>();
 		int nb = 0;
 		for (String s : readScores){
 			String[] parse = s.split(",");
-			if (s.length() == 4){
+			if (s.length() == 4){ // if there is a score
 				BestPlayer bp = new BestPlayer(parse[2], Integer.parseInt(parse[3]));
-				nb ++;
-				allBest[nb-1] = bp;
+				allBest.add(bp);
 			} // on ne prend pas les lignes ne contenant pas de score.
 		}
-		return allBest;
+		collections.sort(allBest, collections.reverseOrder());
+		int nb = 0;
+		if (allBest.length() < 10){
+			BestPlayer[] res = new BestPlayer[allBest.length()];
+			nb = allBest.length();
+		} else {
+			BestPlayer[] res = new BestPlayer[10];
+			nb = 10;
+		}
+		for (int i = 0; i < nb; i++){
+			res[i] = allBest.get(i);
+		}
+		return res;
 	}
 	
 	
