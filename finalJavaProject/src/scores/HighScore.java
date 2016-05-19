@@ -43,9 +43,9 @@ public class HighScore {
 	/**
 	*
 	*/
-	public tenBestScores (String [] readScores) {
+	public tenBestScores(String [] readScores) {
 		BestPlayer[] allBest = new BestPlayer[10];
 		
-		
+		return;
 	}
 }

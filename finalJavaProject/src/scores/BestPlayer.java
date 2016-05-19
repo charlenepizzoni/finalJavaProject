@@ -11,7 +11,7 @@ import java.util.Scanner;
 /**
  * 
  */
-public class TestHighScore1 {
+public class BestPlayer {
 	private String player;
 	private int score;
 	
