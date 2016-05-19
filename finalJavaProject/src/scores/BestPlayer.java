@@ -15,6 +15,11 @@ public class BestPlayer {
 	private String player;
 	private int score;
 	
+	public BestPlayer(String player, int score){
+		this.player = player;
+		this.score = score;
+	}
+	
 	public int compareTo(BestPlayer p){
 		if (this.score == p.score){
 			return 0;

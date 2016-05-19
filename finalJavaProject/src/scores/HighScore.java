@@ -43,9 +43,17 @@ public class HighScore {
 	/**
 	*
 	*/
-	public tenBestScores(String [] readScores) {
+	public BestPlayer[] tenBestScores(String [] readScores) {
 		BestPlayer[] allBest = new BestPlayer[10];
-		
-		return;
+		int nb = 0;
+		for (String s : readScores){
+			String[] parse = s.split(",");
+			if (s.length() == 4){
+				BestPlayer bp = new BestPlayer(parse[2], Integer.parseInt(parse[3]));
+				nb ++;
+				allBest[nb-1] = bp;
+			} // on ne prend pas les lignes ne contenant pas de score.
+		}
+		return allBest;
 	}
 }
