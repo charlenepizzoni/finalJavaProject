@@ -24,11 +24,12 @@ public class TestHighScore4 {
                 String name = sc.nextLine();
                 
                 HighScore4 highScore = new HighScore4();
-                BestPlayer[] bestPlayers = highScore.tenBestScores(highScore.getScores());
+                BestPlayer[] bestPlayers;
                 String str;
 
                 do{
                         System.out.println("Previous best scores are :");
+                        bestPlayers = highScore.tenBestScores(highScore.getScores());
                         int j = 1;
                         for (BestPlayer p : bestPlayers) {
                                 if (p != null){        
@@ -41,7 +42,7 @@ public class TestHighScore4 {
                         if (str.equals("y")){
                                 BestPlayer bp= new BestPlayer(name, TestHighScore4.getRandomScore());
                                 for (BestPlayer player : bestPlayers) {
-                                        if (player != null && player.getScore() < bp.getScore()) {
+                                        if (player != null && player.getScore() <= bp.getScore()) {
                                                 try {
                                                         HighScore4.sendScore(new BestPlayer(bp.getPlayer(), bp.getScore()));
                                                 } catch (IOException e) {
@@ -53,6 +54,7 @@ public class TestHighScore4 {
                         }
                 } while(str.equals("y"));
                 sc.close();
+                System.out.println("Thank you ! Have a good day !");
         }
         
         
