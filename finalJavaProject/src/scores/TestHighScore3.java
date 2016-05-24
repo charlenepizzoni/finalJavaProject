@@ -9,7 +9,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * tests the class HighScores and its functions.
+ * Test class HighScores and its functions.
  */
 public class TestHighScore3 {
 
@@ -27,28 +27,20 @@ public class TestHighScore3 {
 				j++;
 			}
 		
-		
-		
-		// enter a username
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Entrez votre prenom :");
 		String nom = sc.nextLine();
 		sc.close();
-		
-		
-		// Read scores from the scoreSamples.txt
 		int score = getRandomScore();
-		
-		// Display player's name and score
 		System.out.println("Username: " + nom + ", Score: " + score);
 				
-		//Add if he's in the top 10
+		
 		for (BestPlayer3 player : bestPlayers) {
 			if (player != null && player.getScore() < score) {
 				try {
 					HighScore3.sendScore(new BestPlayer3(nom, score));
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				break;
@@ -57,6 +49,11 @@ public class TestHighScore3 {
 	
 	}
 	
+	/**
+	 * retrieves a score randomly from scoreSamples.txt
+	 * 
+	 * @return a random score
+	 */
 	public static int getRandomScore()
 	{ ArrayList<String> values = new ArrayList<String>();
 		int res=0;

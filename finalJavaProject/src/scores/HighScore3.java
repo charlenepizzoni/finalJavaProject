@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Collections;
 
 /**
- * manages high scores.
+ * manages high scores and add player's score if it is greater than old scores.
  */
 public class HighScore3 {
 
@@ -24,7 +24,7 @@ public class HighScore3 {
 	public List<String> getScores() {
 		
 		List<String> scores = new ArrayList<String>();
-		//String scores[] = new String[10];
+		
 		
 	    URL url;
 		try {
