@@ -5,7 +5,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,26 +18,48 @@ public class TestHighScore3 {
 	 */
 	public static void main(String[] args) {
 		
-		
-		
 		HighScore3 highscore = new HighScore3();
-		BestPlayer[] bestPlayers = highscore.tenBestScores(highscore.getScores());
+		BestPlayer3[] bestPlayers = highscore.tenBestScores(highscore.getScores());
 		int j = 1;
-		for (BestPlayer p : bestPlayers)
+		for (BestPlayer3 p : bestPlayers)
 			{
 				System.out.println("numero" + j + ": " + p.getPlayer());	
 				j++;
 			}
 		
-		// Part current score
+		
+		
+		// enter a username
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Entrez votre prenom :");
-		String str = sc.nextLine();
+		String nom = sc.nextLine();
 		sc.close();
 		
-		List<String> values = new ArrayList<String>(); 
 		
+		// Read scores from the scoreSamples.txt
+		int score = getRandomScore();
 		
+		// Display player's name and score
+		System.out.println("Username: " + nom + ", Score: " + score);
+				
+		//Add if he's in the top 10
+		for (BestPlayer3 player : bestPlayers) {
+			if (player != null && player.getScore() < score) {
+				try {
+					HighScore3.sendScore(new BestPlayer3(nom, score));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			}
+		}
+	
+	}
+	
+	public static int getRandomScore()
+	{ ArrayList<String> values = new ArrayList<String>();
+		int res=0;
 		try (BufferedReader br = new BufferedReader(new FileReader("scoreSamples.txt")))
 		{
 			String sCurrentLine;
@@ -51,24 +72,13 @@ public class TestHighScore3 {
 			int rndValue = rnd.nextInt(values.size());
 
 			String score = values.get(rndValue);
-			System.out.println( str+ " a fait un score de "+ score);
+			res = Integer.parseInt(score);
 			
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
 		
-		// Part high scores
-		HighScore highScore = new HighScore();
-		String scores[];
-		int i = 0;
-		
-		scores = highScore.getScores();
-		System.out.println("\nPrevious high scores are :");
-		while ((i < 10) && (scores[i] != null)){
-			System.out.println(scores[i]);
-			i++;
-		}
-		
+		return res;
 	}
 }

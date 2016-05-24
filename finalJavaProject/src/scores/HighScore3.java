@@ -50,14 +50,15 @@ public class HighScore3 {
 	
 	/**
 	* Retrieves scores and extract the 10 best
+	* @param readScores The csv lines read from the server.
 	*/
-	public BestPlayer[] tenBestScores(List<String> readScores) {
-		ArrayList<BestPlayer> allBest = new ArrayList<BestPlayer>();
+	public BestPlayer3[] tenBestScores(List<String> readScores) {
+		ArrayList<BestPlayer3> allBest = new ArrayList<BestPlayer3>();
 		int nb = 0;
 		for (String s : readScores){ // pour chaque ligne de scores
 			String[] parsed = s.split(",");
 			if (parsed.length == 4){ // if there is a score
-				BestPlayer bp = new BestPlayer(parsed[3], Integer.parseInt(parsed[2]));
+				BestPlayer3 bp = new BestPlayer3(parsed[3], Integer.parseInt(parsed[2]));
 				allBest.add(bp);
 			} // on ne prend pas les lignes ne contenant pas de score.
 		}
@@ -68,11 +69,28 @@ public class HighScore3 {
 		} else {
 			nb = 10;
 		}
-		BestPlayer[] res = new BestPlayer[nb];
+		BestPlayer3[] res = new BestPlayer3[nb];
 		for (int i = 0; i < nb; i++){
 			res[i] = allBest.get(i);
 		}
 		return res;
+	}
+	
+	
+	
+
+	/**
+	 * Send a new highscore to the server. 
+	 * 
+	 * @param player Send the Player highscore to the server.
+	 */
+	public static void sendScore(BestPlayer3 player) throws IOException{
+		String name = player.getPlayer();
+		int score = player.getScore();
+		
+		
+		URL getURL = new URL("https://api.thingspeak.com/update?api_key=KT52V0MMF3DG3NDA&field1=" + score + "&field2=" + name);
+		getURL.openStream();
 	}
 	
 	

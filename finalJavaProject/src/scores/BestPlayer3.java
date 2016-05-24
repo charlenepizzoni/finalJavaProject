@@ -4,6 +4,7 @@ package scores;
  * 
  */
 public class BestPlayer3 implements Comparable<BestPlayer3>{
+	
 	private String player;
 	private int score;
 	
