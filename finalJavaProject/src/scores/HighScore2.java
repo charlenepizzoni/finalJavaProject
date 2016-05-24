@@ -54,22 +54,21 @@ public class HighScore2 {
 	public BestPlayer[] tenBestScores(List<String> readScores) {
 		ArrayList<BestPlayer> allBest = new ArrayList<BestPlayer>();
 		int nb = 0;
-		for (String s : readScores){
-			String[] parse = s.split(",");
-			if (s.length() == 4){ // if there is a score
-				BestPlayer bp = new BestPlayer(parse[2], Integer.parseInt(parse[3]));
+		for (String s : readScores){ // pour chaque ligne de scores
+			String[] parsed = s.split(",");
+			if (parsed.length == 4){ // if there is a score
+				BestPlayer bp = new BestPlayer(parsed[3], Integer.parseInt(parsed[2]));
 				allBest.add(bp);
 			} // on ne prend pas les lignes ne contenant pas de score.
 		}
-		collections.sort(allBest, collections.reverseOrder());
-		int nb = 0;
-		if (allBest.length() < 10){
-			BestPlayer[] res = new BestPlayer[allBest.length()];
-			nb = allBest.length();
+		Collections.sort(allBest, Collections.reverseOrder());
+		// get the 10 best
+		if (allBest.size() < 10){
+			nb = allBest.size();
 		} else {
-			BestPlayer[] res = new BestPlayer[10];
 			nb = 10;
 		}
+		BestPlayer[] res = new BestPlayer[nb];
 		for (int i = 0; i < nb; i++){
 			res[i] = allBest.get(i);
 		}

@@ -1,17 +1,9 @@
 package scores;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
-
 /**
  * 
  */
-public class BestPlayer implements comparable{
+public class BestPlayer implements Comparable<BestPlayer>{
 	private String player;
 	private int score;
 	
@@ -20,6 +12,7 @@ public class BestPlayer implements comparable{
 		this.score = score;
 	}
 	
+	@Override
 	public int compareTo(BestPlayer p){
 		if (this.score == p.getScore()){
 			return 0;
@@ -34,8 +27,8 @@ public class BestPlayer implements comparable{
 		return this.score;
 	}
 
-	public String getName(){
-		return this.name;
+	public String getPlayer(){
+		return this.player;
 	}
 	
 	
